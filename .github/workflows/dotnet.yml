@@ -20,15 +20,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-
-    - name: ZAP Baseline Scan
-      # You may pin to the exact commit or the version.
-      # uses: zaproxy/action-baseline@0619037bb784a56e2e06b104f0ebe157e076f075
-      uses: zaproxy/action-baseline@v0.13.0
-      with:
-        # Target URL
-        target: https://ginandjuice.shop
-          
     
     - name: Restore dependencies
       run: dotnet restore
@@ -41,10 +32,16 @@ jobs:
       # You may pin to the exact commit or the version.
       # uses: SonarSource/sonarqube-quality-gate-action@d304d050d930b02a896b0f85935344f023928496
       uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
-      with:
-        # Location of the scanner metadata report file
-        scanMetadataReportFile: # optional, default is .scannerwork/report-task.txt
               
+
+    - name: ZAP Baseline Scan
+      # You may pin to the exact commit or the version.
+      # uses: zaproxy/action-baseline@0619037bb784a56e2e06b104f0ebe157e076f075
+      uses: zaproxy/action-baseline@v0.13.0
+      with:
+        # Target URL
+        target: https://ginandjuice.shop
+          
     - name: semgrep-action
       # You may pin to the exact commit or the version.
       # uses: semgrep/semgrep-action@713efdd345f3035192eaa63f56867b88e63e4e5d
