@@ -26,6 +26,14 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Dastardly Scan Action
+      # You may pin to the exact commit or the version.
+      # uses: PortSwigger/dastardly-github-action@f72f38f8b4ac8ed59c69854cc77eb9d53e50e78b
+      uses: PortSwigger/dastardly-github-action@v1.0.0
+      with:
+        # The full url (including scheme) of the site to scan
+        target-url: https://ginandjuice.shop
+              
     - name: semgrep-action
       # You may pin to the exact commit or the version.
       # uses: semgrep/semgrep-action@713efdd345f3035192eaa63f56867b88e63e4e5d
